@@ -10,7 +10,7 @@ let polygons = [
             [48.85346104822773,2.3470146522513193],
             [48.852722069967,2.348637735017842],
             [48.852246283670866,2.3498685086796596],
-            [5.513516521235,3.512416589454425],
+            [5.513516521235,3.512416589454425], // ligne à supprimer avec les bornes
             [48.85158827389591,2.352683903431068],
             [48.85202863524094,2.352391594686386],
             [48.85372424333016,2.3520685166001587],
@@ -55,15 +55,22 @@ let polygons = [
 
 // });
 
-let newcoords = polygons.forEach(polygon => { 
+polygons.forEach(polygon => { 
     polygon.forEach(linestring => { 
         linestring.forEach(point => { 
+            const latitude = point[0];
+            const longitude = point[1];
             point.forEach((coord, index) => {
-                point[index] = Number(coord.toFixed(5));
+                if (48.84 > latitude > 48.86 && 2.33 > longitude > 2.37) {
+                    delete point[index];
+                } else {
+                    point[index] = Number(coord.toFixed(5));
+                }
             });
             point.reverse();
         }) 
     }) 
 });
 
-console.log(newcoords);
+JSON.stringify(polygons)
+
