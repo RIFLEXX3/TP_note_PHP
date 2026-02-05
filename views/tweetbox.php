@@ -25,11 +25,13 @@
             </tr>
             <tr v-for="item in tweet">
                 <td><strong>{{ item.text }}</strong></td>
-                <td>{{ item.photo }}</td>
-                <td v-if="photo"><img src="https://picsum.photos/200/200"></td>
+                <!-- <td>{{ item.photo }}</td> -->
+                <td v-if="item.photo"><img v-bind:src="item.photo"></td>
             </tr>
         </table>
-{{tweet}}
+        
+<!-- {{tweet}} -->
+
         <!-- <ul>
             <li v-for="item in tweet">
             <strong>{{ item.text }}</strong>
