@@ -9,14 +9,21 @@
 </head>
 <body>
 
-<h1>Cartographie avec Leaflet</h1>
+    <div id="entete">
+        <form @submit.prevent="geocode">
+            <input type="text" class="form-control" placeholder="Rechercher un lieu..." v-model="search">
+            <p>{{ search }}</p>
+            <button class="btn btn-primary">Rechercher</button>
+        </form>
+    </div>
 
-<div id="map" ></div>
+    <div id="map" ></div>
 
-<div id="coord"></div>
+    <div id="coord"></div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
-<script src="/assets/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="/assets/leaflet.js"></script>
     
 </body>
 </html>

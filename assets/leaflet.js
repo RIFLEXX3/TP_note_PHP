@@ -16,7 +16,6 @@ navigator.geolocation.getCurrentPosition(function (position) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-
     var Geodata = L.icon({
         iconUrl: 'assets/Logo_Geodata_Paris.png',
         iconSize: [95,38],
@@ -30,15 +29,41 @@ navigator.geolocation.getCurrentPosition(function (position) {
 
     var popup = L.popup();
 
-
     function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(map);
     }
-
     map.on('click', onMapClick);
-
 });
+
+Vue.createApp({
+  data() {
+    return {
+         search: '',
+        
+    };
+  },
+  
+  computed: {
+    
+  },
+
+  methods: {
+    geocode() {
+         let url = 'https://data.geopf.fr/geocodage/search?q=' + this.search;
+
+        fetch(url)
+        .then(response => {
+            return response.geojson();
+        })
+        .then(data => {
+
+            console.log(data);
+
+        }) 
+  }},
+
+}).mount('#entete');
 
