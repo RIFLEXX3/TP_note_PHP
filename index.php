@@ -154,6 +154,10 @@ Flight::route('/map', function(){
     Flight::render('leaflet');
 });
 
+Flight::route('/tweetbox', function(){
+    Flight::render('tweetbox');
+});
+
 // Flight::route('/commune', function(){
 //     $link = Flight::get('geobase');
 //     $departements = mysqli_query($link, 'SELECT insee, nom FROM departements ORDER BY nom');
