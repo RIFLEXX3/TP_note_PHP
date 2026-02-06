@@ -16,16 +16,16 @@ navigator.geolocation.getCurrentPosition(function (position) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    var Geodata = L.icon({
-        iconUrl: 'assets/Logo_Geodata_Paris.png',
-        iconSize: [95,38],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-    });
+    // var Geodata = L.icon({
+    //     iconUrl: 'assets/Logo_Geodata_Paris.png',
+    //     iconSize: [95,38],
+    //     iconAnchor: [22, 94],
+    //     popupAnchor: [-3, -76],
+    // });
 
-    var marker =L.marker([48.841012, 2.587152], {icon: Geodata}).addTo(map);
+    // var marker =L.marker([48.841012, 2.587152], {icon: Geodata}).addTo(map);
 
-    marker.bindPopup("<b>Géodata Paris</b>").openPopup();
+    // marker.bindPopup("<b>Géodata Paris</b>").openPopup();
 
     var popup = L.popup();
 
@@ -55,15 +55,21 @@ Vue.createApp({
          let url = 'https://data.geopf.fr/geocodage/search?q=' + this.search;
 
         fetch(url)
-        .then(response => {
-            return response.geojson();
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            console.log("MAP:", this.map);
+            L.geoJSON(result.features).addTo(this.map);
+
+            // var myLayer = L.geoJSON().addTo(this.map);
+            // myLayer.addData(result);
         })
-        .then(data => {
+        
+        // .then(data => {
 
-            console.log(data);
+        //     console.log(data);
 
-        }) 
+        // }) 
   }},
 
 }).mount('#entete');
-
