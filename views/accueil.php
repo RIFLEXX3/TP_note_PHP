@@ -20,6 +20,7 @@
                     <li><a href="/login">login</a></li>
                     <!-- <li><a href="/region">régions</a></li> -->
                     <li><a href="/departement">départements</a></li>
+                    <li><a href="/map">Carte</a></li></li>
                 </ul>
             </nav>
 

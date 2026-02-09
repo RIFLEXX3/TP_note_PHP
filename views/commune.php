@@ -40,6 +40,7 @@
             <tr>
                 <td><?= $com['insee']; ?></td>
                 <td><?= $com['nom']; ?></td>
+                <td><a href="/villes2?insee=<?= $com['insee'] ?>">Voir sur la carte</a></td>            
             </tr>
         <?php } ?>
     

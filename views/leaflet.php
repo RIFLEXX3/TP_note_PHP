@@ -11,10 +11,15 @@
 
     <div id="entete">
         <form @submit.prevent="geocode">
-            <input type="text" class="form-control" placeholder="Rechercher un lieu..." v-model="search">
-            <p>{{ search }}</p>
+            <input type="text" class="form-control" placeholder="Rechercher un lieu..." v-model="search" @input="autocomplete"> <!-- ajout de @input pour faire les recherches -->
+            <!-- <p>{{ search }}</p> -->
             <button class="btn btn-primary">Rechercher</button>
         </form>
+        <ul id="villes" v-if="villes.length">
+            <li v-for="ville in villes" @click="recupGeometry(ville)">
+                {{ ville.nom }} - {{ ville.insee }}
+            </li>
+        </ul>
     </div>
 
     <div id="map" ></div>
